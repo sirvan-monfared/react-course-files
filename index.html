@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Components Demo - Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Component -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>Dashboard</h1>
+                </div>
+                <nav class="nav">
+                    <a href="#" class="nav-link active">Home</a>
+                    <a href="#" class="nav-link">About</a>
+                    <a href="#" class="nav-link">Services</a>
+                    <a href="#" class="nav-link">Contact</a>
+                </nav>
+                <div class="header-actions">
+                    <button class="btn btn-secondary">Sign In</button>
+                    <button class="btn btn-primary">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <h2 class="hero-title">Welcome to Our Platform</h2>
+                <p class="hero-description">Build amazing React components and learn reusability</p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary btn-large">Get Started</button>
+                    <button class="btn btn-outline btn-large">Learn More</button>
+                </div>
+            </section>
+
+            <!-- Stats Section -->
+            <section class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-content">
+                            <h3 class="stat-value">1,234</h3>
+                            <p class="stat-label">Total Users</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-content">
+                            <h3 class="stat-value">$45,678</h3>
+                            <p class="stat-label">Revenue</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-content">
+                            <h3 class="stat-value">89%</h3>
+                            <p class="stat-label">Growth Rate</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-content">
+                            <h3 class="stat-value">4.8</h3>
+                            <p class="stat-label">Rating</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- User Cards Section -->
+            <section class="users-section">
+                <h2 class="section-title">Team Members</h2>
+                <div class="users-grid">
+                    <div class="user-card">
+                        <div class="user-avatar">JD</div>
+                        <div class="user-info">
+                            <h3 class="user-name">John Doe</h3>
+                            <p class="user-role">Frontend Developer</p>
+                            <p class="user-email">john.doe@example.com</p>
+                        </div>
+                        <div class="user-actions">
+                            <button class="btn btn-small btn-primary">View Profile</button>
+                            <button class="btn btn-small btn-outline">Message</button>
+                        </div>
+                    </div>
+                    <div class="user-card">
+                        <div class="user-avatar">JS</div>
+                        <div class="user-info">
+                            <h3 class="user-name">Jane Smith</h3>
+                            <p class="user-role">UI/UX Designer</p>
+                            <p class="user-email">jane.smith@example.com</p>
+                        </div>
+                        <div class="user-actions">
+                            <button class="btn btn-small btn-primary">View Profile</button>
+                            <button class="btn btn-small btn-outline">Message</button>
+                        </div>
+                    </div>
+                    <div class="user-card">
+                        <div class="user-avatar">MJ</div>
+                        <div class="user-info">
+                            <h3 class="user-name">Mike Johnson</h3>
+                            <p class="user-role">Backend Developer</p>
+                            <p class="user-email">mike.johnson@example.com</p>
+                        </div>
+                        <div class="user-actions">
+                            <button class="btn btn-small btn-primary">View Profile</button>
+                            <button class="btn btn-small btn-outline">Message</button>
+                        </div>
+                    </div>
+                    <div class="user-card">
+                        <div class="user-avatar">SW</div>
+                        <div class="user-info">
+                            <h3 class="user-name">Sarah Williams</h3>
+                            <p class="user-role">Product Manager</p>
+                            <p class="user-email">sarah.williams@example.com</p>
+                        </div>
+                        <div class="user-actions">
+                            <button class="btn btn-small btn-primary">View Profile</button>
+                            <button class="btn btn-small btn-outline">Message</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Form Section -->
+            <section class="form-section">
+                <h2 class="section-title">Contact Us</h2>
+                <div class="form-container">
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" id="name" class="form-input" placeholder="Enter your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" class="form-input" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" id="subject" class="form-input" placeholder="What is this about?">
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" class="form-textarea" rows="5" placeholder="Enter your message"></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary btn-large">Send Message</button>
+                            <button type="reset" class="btn btn-outline btn-large">Clear</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Feature Cards Section -->
+            <section class="features-section">
+                <h2 class="section-title">Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🚀</div>
+                        <h3 class="feature-title">Fast Performance</h3>
+                        <p class="feature-description">Lightning-fast load times and smooth interactions for the best user experience.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h3 class="feature-title">Secure & Safe</h3>
+                        <p class="feature-description">Enterprise-grade security to keep your data protected at all times.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3 class="feature-title">Responsive Design</h3>
+                        <p class="feature-description">Works perfectly on all devices - desktop, tablet, and mobile.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3 class="feature-title">Beautiful UI</h3>
+                        <p class="feature-description">Modern and intuitive interface designed with user experience in mind.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer Component -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">API Reference</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Connect</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Twitter</a>
+                        <a href="#" class="social-link">LinkedIn</a>
+                        <a href="#" class="social-link">GitHub</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Dashboard. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
