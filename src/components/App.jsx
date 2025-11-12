@@ -2,6 +2,8 @@ import Header from "./Header.jsx"
 import Hero from "./Hero.jsx"
 import Stats from "./Stats.jsx"
 import TeamMembers from "./layouts/TeamMembers.jsx"
+import ContactUs from "./layouts/ContactUs.jsx";
+
 import "../index.css";
 
 
@@ -19,60 +21,7 @@ export default function App() {
           
           <TeamMembers/>
 
-          <section class="form-section">
-            <h2 class="section-title">Contact Us</h2>
-            <div class="form-container">
-              <form class="contact-form">
-                <div class="form-group">
-                  <label for="name" class="form-label">
-                    Full Name
-                  </label>
-                  <input type="text" id="name" class="form-input" placeholder="Enter your name" />
-                </div>
-                <div class="form-group">
-                  <label for="email" class="form-label">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    class="form-input"
-                    placeholder="Enter your email"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="subject" class="form-label">
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    class="form-input"
-                    placeholder="What is this about?"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="message" class="form-label">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    class="form-textarea"
-                    rows="5"
-                    placeholder="Enter your message"
-                  ></textarea>
-                </div>
-                <div class="form-actions">
-                  <button type="submit" class="btn btn-primary btn-large">
-                    Send Message
-                  </button>
-                  <button type="reset" class="btn btn-outline btn-large">
-                    Clear
-                  </button>
-                </div>
-              </form>
-            </div>
-          </section>
+          <ContactUs/>
 
           <section class="features-section">
             <h2 class="section-title">Features</h2>
