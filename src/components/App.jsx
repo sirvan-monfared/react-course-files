@@ -5,9 +5,13 @@ import TeamMembers from "./layouts/TeamMembers.jsx"
 import ContactUs from "./layouts/ContactUs.jsx";
 
 import "../index.css";
+import Tabs from "./layouts/Tabs.jsx";
 
 
 export default function App() {
+
+  console.log('App is executing...')
+
   return (
     <>
       <Header/>
@@ -23,39 +27,7 @@ export default function App() {
 
           <ContactUs/>
 
-          <section class="features-section">
-            <h2 class="section-title">Features</h2>
-            <div class="features-grid">
-              <div class="feature-card">
-                <div class="feature-icon">🚀</div>
-                <h3 class="feature-title">Fast Performance</h3>
-                <p class="feature-description">
-                  Lightning-fast load times and smooth interactions for the best user experience.
-                </p>
-              </div>
-              <div class="feature-card">
-                <div class="feature-icon">🔒</div>
-                <h3 class="feature-title">Secure & Safe</h3>
-                <p class="feature-description">
-                  Enterprise-grade security to keep your data protected at all times.
-                </p>
-              </div>
-              <div class="feature-card">
-                <div class="feature-icon">📱</div>
-                <h3 class="feature-title">Responsive Design</h3>
-                <p class="feature-description">
-                  Works perfectly on all devices - desktop, tablet, and mobile.
-                </p>
-              </div>
-              <div class="feature-card">
-                <div class="feature-icon">🎨</div>
-                <h3 class="feature-title">Beautiful UI</h3>
-                <p class="feature-description">
-                  Modern and intuitive interface designed with user experience in mind.
-                </p>
-              </div>
-            </div>
-          </section>
+          <Tabs/>
         </div>
       </main>
 
