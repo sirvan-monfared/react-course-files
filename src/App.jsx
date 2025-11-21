@@ -9,6 +9,7 @@ import initialTodos from "./utils/todos.js";
 function App() {
 
   const [todos, setTodos] = useState(initialTodos);
+  const [filter, setFilter] = useState('all')
 
   function toggleCompleted(id) {
     setTodos((oldTodos) => {
@@ -25,17 +26,37 @@ function App() {
 
   function createTask(task) {
     setTodos((oldTodos) => {
-      oldTodos.push({
+
+      return [...todos, {
         id: oldTodos.length + 1,
         title: task,
         completed: false
-      })
+      }]
 
-      console.log(oldTodos);
-
-      return oldTodos
     })
   }
+
+  function deleteTask(todoId) {
+    setTodos((oldTodos) => {
+      return oldTodos.filter(todo => todo.id !== todoId)
+    })
+  }
+
+  function clearCompletedTasks() {
+    setTodos(oldTodos => {
+      return oldTodos.filter(todo => ! todo.completed)
+    })
+  }
+
+  function changeFilter(filterType) {
+    setFilter(filterType)
+  }
+
+  const filteredTodos = todos.filter(todo => {
+    if (filter === 'completed') return todo.completed;
+    if (filter === 'active') return ! todo.completed;
+    return true; //all
+  })
 
   return (
     <div className="app">
@@ -44,11 +65,11 @@ function App() {
 
         <CreateTask handleCreateTask={createTask} />
 
-        <Filters />
+        <Filters filter={filter} changeFilter={changeFilter} />
 
-        <TodoList todos={todos} handleToggleCompleted={toggleCompleted} />
+        <TodoList todos={filteredTodos} handleToggleCompleted={toggleCompleted} handleDelete={deleteTask} />
 
-        <Stats />
+        <Stats todos={todos} handleClearCompleted={clearCompletedTasks} />
       </div>
     </div>
   );

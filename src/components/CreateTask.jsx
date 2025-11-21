@@ -5,7 +5,8 @@ export default function CreateTask({handleCreateTask}) {
   const [task, setTask] = useState('')
 
   function submit() {
-    handleCreateTask(task)
+    handleCreateTask(task);
+    setTask('');
   } 
 
   function handleInput(e) {

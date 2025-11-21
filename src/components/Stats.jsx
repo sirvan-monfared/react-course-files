@@ -1,18 +1,24 @@
-export default function Stats() {
+export default function Stats({todos, handleClearCompleted}) {
+
+  const completed = todos.filter(item => item.completed).length;
+  const active = todos.filter(item => !item.completed).length;
+  const total = todos.length
+
+
   return (
     <div className="todo-footer">
       <div className="todo-stats">
         <span className="stat-item">
-          <strong>Total:</strong> 5
+          <strong>Total:</strong> {total}
         </span>
         <span className="stat-item">
-          <strong>Active:</strong> 3
+          <strong>Active:</strong> {active}
         </span>
         <span className="stat-item">
-          <strong>Completed:</strong> 2
+          <strong>Completed:</strong> {completed}
         </span>
       </div>
-      <button className="clear-button">Clear Completed</button>
+      <button className="clear-button" onClick={handleClearCompleted}>Clear Completed</button>
     </div>
   );
 }

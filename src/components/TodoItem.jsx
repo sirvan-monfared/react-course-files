@@ -1,4 +1,4 @@
-export default function TodoItem({todo, handleToggleCompleted}) {
+export default function TodoItem({todo, handleToggleCompleted, handleDelete}) {
   return (
     <div className={`todo-item ${todo.completed ? 'completed' : ''}`}>
       <div className="todo-item-content">
@@ -8,7 +8,7 @@ export default function TodoItem({todo, handleToggleCompleted}) {
         <span className="todo-text">{todo.title}</span>
       </div>
       <div className="todo-actions">
-        <button className="action-button delete-button">Delete</button>
+        <button className="action-button delete-button" onClick={() => handleDelete(todo.id)}>Delete</button>
       </div>
     </div>
   );
