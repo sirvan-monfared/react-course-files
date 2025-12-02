@@ -1,4 +1,12 @@
-function CartIcon({ cartCount }) {
+import {use} from 'react';
+import { CartContext } from '../stores/CartContext';
+
+function CartIcon() {
+
+  const {items} = use(CartContext)
+  const cartCount = items.reduce((total, item) => total + item.quantity, 0);
+
+
   return (
     <div className="relative">
       <svg className="w-7 h-7 text-gray-700 hover:text-indigo-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">

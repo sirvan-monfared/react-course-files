@@ -1,7 +1,13 @@
+import {use} from "react";
 import RemoveButton from './RemoveButton'
 import { formatPrice } from '../utils/currency'
+import { CartContext } from '../stores/CartContext'
 
-function CartItemDetails({ item, removeFromCart, updateQuantity }) {
+function CartItemDetails({ item }) {
+
+  const { update } = use(CartContext)
+
+
   return (
     <div className="flex gap-4" dir="rtl">
       <img
@@ -19,21 +25,21 @@ function CartItemDetails({ item, removeFromCart, updateQuantity }) {
           <label className="text-sm text-gray-600">تعداد:</label>
 
           <button
-            onClick={() => updateQuantity(item.id, item.quantity - 1)}
+            onClick={() => update(item.id, item.quantity - 1)}
             className="w-7 h-7 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center text-sm font-semibold"
           >
             −
           </button>
           <span className="w-8 text-center font-semibold">{item.quantity}</span>
           <button
-            onClick={() => updateQuantity(item.id, item.quantity + 1)}
+            onClick={() => update(item.id, item.quantity + 1)}
             className="w-7 h-7 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center text-sm font-semibold"
           >
             +
           </button>
         </div>
       </div>
-      <RemoveButton itemId={item.id} removeFromCart={removeFromCart} />
+      <RemoveButton itemId={item.id} />
 
     </div>
   )

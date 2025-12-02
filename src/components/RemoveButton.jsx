@@ -1,7 +1,13 @@
-function RemoveButton({ itemId, removeFromCart }) {
+import {use} from 'react'
+import { CartContext } from '../stores/CartContext'
+
+function RemoveButton({ itemId }) {
+
+  const {remove} = use(CartContext);
+
   return (
     <button
-      onClick={() => removeFromCart(itemId)}
+      onClick={() => remove(itemId)}
       className="text-red-500 hover:text-red-700 p-2 transition-colors"
       aria-label="Remove item"
     >
