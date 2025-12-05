@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useReducer } from "react";
+import cartReducer from '../reducers/cart-reducer';
 
 export const CartContext = createContext({
   items: [],
@@ -7,34 +8,35 @@ export const CartContext = createContext({
   update: () => {},
 });
 
-export default function CartContextProvider({children}) {
-
-  const [cart, setCart] = useState([]);
+export default function CartContextProvider({ children }) {
+  const [cart, dispatch] = useReducer(cartReducer, []);
 
   const addToCart = (product) => {
-    setCart((prevCart) => {
-      const existingItem = prevCart.find((item) => item.id === product.id);
-      if (existingItem) {
-        return prevCart.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-        );
-      }
-      return [...prevCart, { ...product, quantity: 1 }];
+    dispatch({
+      type: "ADD_TO_CART",
+      payload: {
+        product,
+      },
     });
   };
 
   const removeFromCart = (productId) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
+    dispatch({
+      type: "REMOVE",
+      payload: {
+        productId,
+      },
+    });
   };
 
   const updateQuantity = (productId, quantity) => {
-    if (quantity <= 0) {
-      removeFromCart(productId);
-      return;
-    }
-    setCart((prevCart) =>
-      prevCart.map((item) => (item.id === productId ? { ...item, quantity } : item))
-    );
+    dispatch({
+      type: "UPDATE",
+      payload: {
+        productId,
+        quantity,
+      },
+    });
   };
 
   const value = {
