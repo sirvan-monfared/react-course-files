@@ -1,14 +1,13 @@
 @import "tailwindcss";
 
-/* RTL Support and Persian Fonts */
-body {
-  font-family: 'Vazirmatn', 'Tahoma', 'Arial', sans-serif;
-  direction: rtl;
-}
-
-/* Persian number formatting */
-@supports (font-feature-settings: normal) {
+@layer base {
   body {
-    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    @apply bg-gray-50 text-gray-900;
+    font-family: 'Vazirmatn', 'Tahoma', 'Arial', sans-serif;
+    direction: rtl;
+  }
+  
+  * {
+    font-family: 'Vazirmatn', 'Tahoma', 'Arial', sans-serif;
   }
 }

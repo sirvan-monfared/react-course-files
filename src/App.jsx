@@ -1,35 +1,57 @@
 import { useState } from "react";
-import "./App.css";
 import Header from "./components/Header";
-import ProductList from "./components/ProductList";
-import Cart from "./components/Cart";
-import { products } from "./utils/products";
-import  CartContextProvider from "./stores/CartContext"
-
-
-// Sample product data - Persian
-const initialProducts = products;
+import TaskList from "./components/TaskList";
+import { SAMPLE_TASKS } from "./utils/sampleTasks";
+import AddModal from "./components/AddModal";
+import { calculateUrgency } from "./utils/calculateUrgency";
 
 function App() {
+  const [isModalOpen, setIsAddModalOpen] = useState(false);
+
+  const openAddModal = () => {
+    setIsAddModalOpen(true);
+  };
+
+  const handleAddTask = (task) => {
+    setTasks((oldTasks) => {
+      return [
+        {
+          id: Date.now().toString(),
+          ...task,
+          urgency: calculateUrgency(task),
+          createdAt: Date.now(),
+        },
+        ...oldTasks,
+      ];
+    });
+  };
+
+  const handleTaskDelete = (taskId) => {
+    setTasks((oldTasks) => oldTasks.filter((task) => task.id !== taskId));
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100" dir="rtl">
-      <CartContextProvider>
-        <Header/>
-        <div className="container mx-auto px-4 py-8 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2">
-              <h1 className="text-4xl font-bold text-gray-900 mb-6">محصولات ما</h1>
-              <ProductList
-                products={initialProducts}
-              />
-            </div>
-            <div className="lg:col-span-1 mt-15">
-              <Cart/>
+    <>
+      <div className="min-h-screen bg-gray-50">
+        <Header onClick={openAddModal} />
+
+        <main className="max-w-4xl mx-auto px-4 py-8">
+          <div className="mb-6 flex items-center justify-between">
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900">وظایف شما</h2>
+              <p className="text-sm text-gray-500 mt-1">{SAMPLE_TASKS.length} وظیفه</p>
             </div>
           </div>
-        </div>
-      </CartContextProvider>
-    </div>
+          <TaskList tasks={SAMPLE_TASKS} onDelete={handleTaskDelete} />
+        </main>
+      </div>
+
+      <AddModal
+        open={isModalOpen}
+        onClose={() => setIsAddModalOpen(false)}
+        onAdd={handleAddTask}
+      ></AddModal>
+    </>
   );
 }
 
