@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import TaskList from "./components/TaskList";
 import { SAMPLE_TASKS } from "./utils/sampleTasks";
@@ -7,6 +7,18 @@ import { calculateUrgency } from "./utils/calculateUrgency";
 
 function App() {
   const [isModalOpen, setIsAddModalOpen] = useState(false);
+  const [tasks, setTasks] = useState(SAMPLE_TASKS)
+
+  useEffect(() => {
+    
+    setTimeout(() => {
+      setTasks((oldTasks) => {
+        console.log('called');
+        return [...oldTasks].sort((a, b) => b.urgency - a.urgency)
+      })
+    }, 2000)
+
+  }, [tasks.length])
 
   const openAddModal = () => {
     setIsAddModalOpen(true);
@@ -30,6 +42,7 @@ function App() {
     setTasks((oldTasks) => oldTasks.filter((task) => task.id !== taskId));
   };
 
+
   return (
     <>
       <div className="min-h-screen bg-gray-50">
@@ -42,9 +55,10 @@ function App() {
               <p className="text-sm text-gray-500 mt-1">{SAMPLE_TASKS.length} وظیفه</p>
             </div>
           </div>
-          <TaskList tasks={SAMPLE_TASKS} onDelete={handleTaskDelete} />
+          <TaskList tasks={tasks} onDelete={handleTaskDelete} />
         </main>
       </div>
+
 
       <AddModal
         open={isModalOpen}

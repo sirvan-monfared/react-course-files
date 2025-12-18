@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "./Modal";
 
 export default function AddModal({ open, onClose, onAdd }) {
@@ -29,6 +29,16 @@ export default function AddModal({ open, onClose, onAdd }) {
     onAdd(newTask);
     onClose();
   };
+
+  useEffect(() => {
+    if (!open) {
+      setTitle("");
+      setDescription("");
+      setImportance(3);
+      setDueDate("");
+      setDueTime("");
+    }
+  }, [open]);
 
   if (!open) return;
 
