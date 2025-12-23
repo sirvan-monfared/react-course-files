@@ -91,6 +91,7 @@
 /* HTML and Body background */
 html,
 body {
+  font-family: 'Vazirmatn', 'Tahoma', 'Arial', sans-serif;
   background-color: var(--bg-primary);
   margin: 0;
   padding: 0;
