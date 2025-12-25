@@ -1,4 +1,5 @@
 import Navigation from "./Navigation";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 export default function Header() {
 
@@ -25,10 +26,7 @@ export default function Header() {
               <span>25:00</span>
             </button>
 
-            {/* Theme Toggle */}
-            <button className="p-2 rounded-lg bg-bg-secondary hover:bg-bg-tertiary transition-colors text-text-primary">
-              🌙 ☀️
-            </button>
+            <ThemeSwitcher/>
           </div>
         </div>
 
