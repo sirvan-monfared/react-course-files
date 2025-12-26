@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-export default function HabitFilters() {
-  const [currentFilter, setCurrentFilter] = useState("all");
+export default function HabitFilters({filter, onFilterChange}) {
 
   const FILTERS = [
     { name: "all", title: "همه عادت ها" },
@@ -11,17 +10,17 @@ export default function HabitFilters() {
 
   return (
     <div className="flex gap-2 mb-6 flex-wrap">
-      {FILTERS.map((filter) => (
+      {FILTERS.map((option) => (
         <button
-          onClick={() => setCurrentFilter(filter.name)}
-          key={filter.name}
+          onClick={() => onFilterChange(option.name)}
+          key={option.name}
           className={`px-4 py-2 rounded-lg ${
-            filter.name === currentFilter
+            option.name === filter
               ? "bg-indigo-500 text-white shadow-md"
               : "bg-bg-secondary text-text-secondary hover:bg-bg-tertiary"
           }`}
         >
-          {filter.title}
+          {option.title}
         </button>
       ))}
     </div>

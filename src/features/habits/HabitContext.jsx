@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const HabitContext = createContext({
   habits: [],
@@ -9,8 +9,14 @@ export const HabitContext = createContext({
   getToday: () => {},
 });
 
+
+let initialHabits = []
+if (localStorage.getItem('habits')) {
+  initialHabits = JSON.parse(localStorage.getItem('habits'));
+}
+
 export default function HabitProvider({ children }) {
-  const [habits, setHabits] = useState([]);
+  const [habits, setHabits] = useState(initialHabits ?? []);
 
   function addHabit(name, color) {
     setHabits((oldHabits) => {
@@ -61,6 +67,10 @@ export default function HabitProvider({ children }) {
       });
     });
   }
+
+  useEffect(() => {
+    localStorage.setItem('habits', JSON.stringify(habits))
+  }, [habits])
 
   const value = {
     habits,
