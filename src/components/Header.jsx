@@ -1,9 +1,11 @@
+import { use } from "react";
 import Navigation from "./Navigation";
 import ThemeSwitcher from "./ThemeSwitcher";
+import { TimerContext } from "../features/timer/TimerContext";
 
 export default function Header() {
 
-
+  const { timeLeft, isRunning, isBreak, formattedTime } = use(TimerContext);
 
 
   return (
@@ -21,9 +23,9 @@ export default function Header() {
           {/* Timer Status & Theme Toggle */}
           <div className="flex items-center gap-4">
             {/* Timer indicator (only shown when timer is running) */}
-            <button className="hidden sm:flex items-center gap-2 px-3 py-1 rounded-lg text-sm font-medium bg-indigo-500 text-white hover:opacity-80 transition-opacity">
-              <span>🎯</span>
-              <span>25:00</span>
+            <button className={`hidden sm:flex items-center gap-2 px-3 py-1 rounded-lg text-sm font-medium ${isBreak ? 'bg-emerald-500' : 'bg-indigo-500'} text-white hover:opacity-80 transition-opacity`}>
+              <span>{isBreak ? '☕' : '🎯'}</span>
+              <span>{formattedTime}</span>
             </button>
 
             <ThemeSwitcher/>
