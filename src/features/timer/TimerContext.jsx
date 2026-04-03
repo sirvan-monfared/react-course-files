@@ -13,26 +13,12 @@ console.log('timer-workDuration:', localStorage.getItem('timer-workDuration'))
 console.log('timer-breakDuration:', localStorage.getItem('timer-breakDuration'))
 
 export default function TimerProvider({ children }) {
-  const [timeLeft, setTimeLeft] = useState(() => {
-    console.log('timer-timeLeft-new: ', localStorage.getItem('timer-timeLeft') ? JSON.parse(localStorage.getItem('timer-timeLeft')) : DEFAULT_WORK_TIME, DEFAULT_WORK_TIME);
-    return localStorage.getItem('timer-timeLeft') ? JSON.parse(localStorage.getItem('timer-timeLeft')) : DEFAULT_WORK_TIME;
-  });
-  const [isRunning, setIsRunning] = useState(() => {
-    return localStorage.getItem('timer-isRunning') ? JSON.parse(localStorage.getItem('timer-isRunning')) : false;
-  });
-  const [isBreak, setIsBreak] = useState(() => {
-    return localStorage.getItem('timer-isBreak') ? JSON.parse(localStorage.getItem('timer-isBreak')) : false;
-  });
-  const [workDuration, setWorkDuration] = useState(() => {
-    return localStorage.getItem('timer-workDuration') ? JSON.parse(localStorage.getItem('timer-workDuration')) : DEFAULT_WORK_TIME;
-  });
-  const [breakDuration, setBreakDuration] = useState(() => {
-    return localStorage.getItem('timer-breakDuration') ? JSON.parse(localStorage.getItem('timer-breakDuration')) : DEFAULT_BREAK_TIME;
-  });
+  const [timeLeft, setTimeLeft] = useState(DEFAULT_WORK_TIME);
+  const [isRunning, setIsRunning] = useState(false);
+  const [isBreak, setIsBreak] = useState(false);
+  const [workDuration, setWorkDuration] = useState(DEFAULT_WORK_TIME);
+  const [breakDuration, setBreakDuration] = useState(DEFAULT_BREAK_TIME);
 
-  const prevIsBreakRef = useRef(undefined);
-
-  // Format time as MM:SS
   const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
@@ -89,37 +75,15 @@ export default function TimerProvider({ children }) {
   }, [timeLeft, isRunning]);
 
   useEffect(() => {
-
-    localStorage.setItem('timer-timeLeft', JSON.stringify(timeLeft))
-
     if (isRunning && timeLeft === 0) {
       skipSession();
     }
   }, [timeLeft]);
 
   useEffect(() => {
-    localStorage.setItem('timer-isBreak', JSON.stringify(isBreak));
-    if (prevIsBreakRef.current === undefined) {
-      prevIsBreakRef.current = isBreak;
-      return;
-    }
-    if (prevIsBreakRef.current !== isBreak) {
       setTimeLeft(isBreak ? breakDuration : workDuration);
-    }
-    prevIsBreakRef.current = isBreak;
-  }, [isBreak, breakDuration, workDuration]);
+  }, [isBreak]);
 
-  useEffect(() => {
-    localStorage.setItem('timer-isRunning', JSON.stringify(isRunning))
-  }, [isRunning]);
-
-  useEffect(() => {
-    localStorage.setItem('timer-workDuration', JSON.stringify(workDuration))
-  }, [workDuration]);
-
-  useEffect(() => {
-    localStorage.setItem('timer-breakDuration', JSON.stringify(breakDuration))
-  }, [breakDuration]);
 
   const timerCtx = {
     timeLeft,
